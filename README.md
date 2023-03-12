@@ -1,11 +1,12 @@
 # ROCm Examples
 This project is currently unsupported and in an early testing stage. Feedback on the contents of this repository is appreciated.
 ## Repository Contents
-- [Applications](/Applications) groups a number of HIP programs for problems that are generally solved using the GPU.
+- [Applications](/Applications/) groups a number of HIP programs for problems that are generally solved using the GPU.
+    - [bitonic_sort](/Applications/bitonic_sort/): Showcases how to order an array of $n$ elements using a GPU implementation of the bitonic sort.
     - [convolution](/Applications/convolution/): A simple GPU implementation for the calculation of discrete convolutions.
-    - [floyd_warshall](/Applications/floyd_warshall): Showcases a GPU implementation of the Floyd-Warshall algorithm for finding shortest paths in certain types of graphs.
+    - [floyd_warshall](/Applications/floyd_warshall/): Showcases a GPU implementation of the Floyd-Warshall algorithm for finding shortest paths in certain types of graphs.
     - [histogram](/Applications/histogram/): Histogram over a byte array with memory bank optimization.
-    - [monte_carlo_pi](/Applications/monte_carlo_pi): Monte Carlo estimation of $\pi$ using hipRAND for random number generation and hipCUB for evaluation.
+    - [monte_carlo_pi](/Applications/monte_carlo_pi/): Monte Carlo estimation of $\pi$ using hipRAND for random number generation and hipCUB for evaluation.
     - [prefix_sum](/Applications/prefix_sum/): Showcases a GPU implementation of a prefix sum with a 2-kernel scan algorithm.
 - [Common](/Common/) contains common utility functionality shared between the examples.
 - [HIP-Basic](/HIP-Basic/) hosts self-contained recipes showcasing HIP runtime functionality.
