@@ -3,7 +3,8 @@ This project is currently unsupported and in an early testing stage. Feedback on
 ## Repository Contents
 - [Applications](/Applications) groups a number of HIP programs for problems that are generally solved using the GPU.
     - [floyd_warshall](/Applications/floyd_warshall): Showcases a GPU implementation of the Floyd-Warshall algorithm for finding shortest paths in certain types of graphs.
-    - [monte_carlo_pi](/Applications/monte_carlo_pi): Monte Carlo estimation of $\pi$ using hipRAND for random number generation and hipCUB for evaluation. 
+    - [histogram](/Applications/histogram/): Histogram over a byte array with memory bank optimization.
+    - [monte_carlo_pi](/Applications/monte_carlo_pi): Monte Carlo estimation of $\pi$ using hipRAND for random number generation and hipCUB for evaluation.
     - [prefix_sum](/Applications/prefix_sum/): Showcases a GPU implementation of a prefix sum with a 2-kernel scan algorithm.
 - [Common](/Common/) contains common utility functionality shared between the examples.
 - [HIP-Basic](/HIP-Basic/) hosts self-contained recipes showcasing HIP runtime functionality.
