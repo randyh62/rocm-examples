@@ -2,6 +2,7 @@
 This project is currently unsupported and in an early testing stage. Feedback on the contents of this repository is appreciated.
 ## Repository Contents
 - [Applications](/Applications) groups a number of HIP programs for problems that are generally solved using the GPU.
+    - [convolution](/Applications/convolution/): A simple GPU implementation for the calculation of discrete convolutions.
     - [floyd_warshall](/Applications/floyd_warshall): Showcases a GPU implementation of the Floyd-Warshall algorithm for finding shortest paths in certain types of graphs.
     - [histogram](/Applications/histogram/): Histogram over a byte array with memory bank optimization.
     - [monte_carlo_pi](/Applications/monte_carlo_pi): Monte Carlo estimation of $\pi$ using hipRAND for random number generation and hipCUB for evaluation.
