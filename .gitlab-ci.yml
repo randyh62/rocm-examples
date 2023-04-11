@@ -69,7 +69,7 @@ copyright-date:
     - Scripts/CopyrightDate/check_copyright.sh -v -d $CI_MERGE_REQUEST_DIFF_BASE_SHA
 
 .build:dockerfiles:
-  timeout: 20m
+  timeout: 60m
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
