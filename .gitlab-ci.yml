@@ -346,7 +346,6 @@ test:nvcc-windows-vs2019:
     - |-
       $SkippedExamples = @(
           "hip_vulkan_interop_vs2019.exe" # Graphical
-          "hip_opengl_interop_vs2019.exe" # Graphical
       )
       Get-ChildItem -Recurse -Path "$CI_PROJECT_DIR/$BUILD_TYPE" -Filter "*_vs2019.exe" |
       ForEach-Object {
