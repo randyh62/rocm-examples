@@ -23,7 +23,8 @@
 EXAMPLES := \
 	bsrmv \
 	bsrsv \
-	bsrxmv
+	bsrxmv \
+	gemvi
 
 all: $(EXAMPLES)
 
