@@ -93,6 +93,7 @@ This project is currently unsupported and in an early testing stage. Feedback on
             - [coomv](/Libraries/rocSPARSE/level_2/coomv/): Showcases a sparse matrix-vector multiplication using COO storage format.
             - [csrmv](/Libraries/rocSPARSE/level_2/csrmv/): Showcases a sparse matrix-vector multiplication using CSR storage format.
             - [ellmv](/Libraries/rocSPARSE/level_2/ellmv/): Showcases a sparse matrix-vector multiplication using ELL storage format.
+            - [gebsrmv](/Libraries/rocSPARSE/level_2/gebsrmv/): Showcases a sparse matrix-dense vector multiplication using GEBSR storage format.
             - [gemvi](/Libraries/rocSPARSE/level_2/gemvi/): Showcases a dense matrix-sparse vector multiplication.
         - [level_3](/Libraries/rocSPARSE/level_3/): Operations between sparse and dense matrices.
             - [bsrmm](/Libraries/rocSPARSE/level_3/bsrmm/): Showcases a sparse matrix-matrix multiplication using BSR storage format.
