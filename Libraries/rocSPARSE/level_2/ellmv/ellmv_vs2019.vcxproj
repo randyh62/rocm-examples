@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CFA1826D-C202-4F97-92C9-DB019675DCCB}</ProjectGuid>
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{050227E6-EB8D-48E2-A381-D8BE4AAD1AEA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>bsrxmv_vs2017</RootNamespace>
+    <RootNamespace>ellmv_vs2019</RootNamespace>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <ItemGroup>

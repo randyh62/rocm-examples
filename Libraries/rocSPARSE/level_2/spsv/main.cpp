@@ -31,7 +31,7 @@
 
 int main()
 {
-    // 1. Setup input data.
+    // 1. Set up input data.
     //            A'           *    y    = alpha *     x
     //
     //  ( 1.0  0.0  0.0  0.0 )   ( 1.0 )           (  0.4 )

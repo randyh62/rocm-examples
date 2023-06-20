@@ -12,9 +12,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CFA1826D-C202-4F97-92C9-DB019675DCCB}</ProjectGuid>
+    <ProjectGuid>{A0A1AE5A-C34B-49FF-B040-49B7A091BBF0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>bsrxmv_vs2017</RootNamespace>
+    <RootNamespace>ellmv_vs2017</RootNamespace>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
