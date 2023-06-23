@@ -91,6 +91,7 @@ This project is currently unsupported and in an early testing stage. Feedback on
             - [bsrxmv](/Libraries/rocSPARSE/level_2/bsrxmv/): Showcases a masked sparse matrix-vector multiplication using BSR storage format.
             - [bsrsv](/Libraries/rocSPARSE/level_2/bsrsv/): Showcases how to solve a linear system of equations whose coefficients are stored in a BSR sparse triangular matrix.
             - [coomv](/Libraries/rocSPARSE/level_2/coomv/): Showcases a sparse matrix-vector multiplication using COO storage format.
+            - [csrmv](/Libraries/rocSPARSE/level_2/csrmv/): Showcases a sparse matrix-vector multiplication using CSR storage format.
             - [ellmv](/Libraries/rocSPARSE/level_2/ellmv/): Showcases a sparse matrix-vector multiplication using ELL storage format.
             - [gemvi](/Libraries/rocSPARSE/level_2/gemvi/): Showcases a dense matrix-sparse vector multiplication.
         - [level_3](/Libraries/rocSPARSE/level_3/): Operations between sparse and dense matrices.
