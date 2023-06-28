@@ -26,6 +26,7 @@ EXAMPLES := \
 	bsrxmv \
 	coomv \
 	csrmv \
+	csrsv \
 	ellmv \
 	gebsrmv \
 	gemvi \
