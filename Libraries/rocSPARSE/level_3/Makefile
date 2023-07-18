@@ -24,6 +24,7 @@ EXAMPLES := \
 	bsrmm \
 	bsrsm \
 	csrmm \
+	csrsm \
 	gebsrmm
 
 all: $(EXAMPLES)

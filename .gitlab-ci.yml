@@ -312,6 +312,7 @@ test:windows-rocm-vs:
       rocsparse_bsrsv_*.exe,
       rocsparse_csric0_*.exe,
       rocsparse_csrilu0_*.exe,
+      rocsparse_csrsm_*.exe,
       rocsparse_csrsv_*.exe,
       rocsparse_spsv_*.exe
 
