@@ -103,6 +103,7 @@ This project is currently unsupported and in an early testing stage. Feedback on
             - [csrmm](/Libraries/rocSPARSE/level_3/csrmm/): Showcases a sparse matrix-matrix multiplication using CSR storage format.
             - [csrsm](/Libraries/rocSPARSE/level_3/csrsm): Showcases how to solve a linear system of equations whose coefficients are stored in a CSR sparse triangular matrix, with solution and right-hand side stored in dense matrices.
             - [gebsrmm](/Libraries/rocSPARSE/level_3/gebsrmm/): Showcases a sparse matrix-matrix multiplication using GEBSR storage format.
+            - [gemmi](/Libraries/rocSPARSE/level_3/gemmi/): Showcases a dense matrix sparse matrix multiplication using CSR storage format.
         - [preconditioner](/Libraries/rocSPARSE/preconditioner/): Manipulations on sparse matrices to obtain sparse preconditioner matrices.
             - [bsric0](/Libraries/rocSPARSE/preconditioner/bsric0/): Shows how to compute the incomplete Cholesky decomposition of a Hermitian positive-definite sparse BSR matrix.
             - [bsrilu0](/Libraries/rocSPARSE/preconditioner/bsrilu0/): Showcases how to obtain the incomplete LU decomposition of a sparse BSR square matrix.
