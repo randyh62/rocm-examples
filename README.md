@@ -96,6 +96,7 @@ This project is currently unsupported and in an early testing stage. Feedback on
             - [ellmv](/Libraries/rocSPARSE/level_2/ellmv/): Showcases a sparse matrix-vector multiplication using ELL storage format.
             - [gebsrmv](/Libraries/rocSPARSE/level_2/gebsrmv/): Showcases a sparse matrix-dense vector multiplication using GEBSR storage format.
             - [gemvi](/Libraries/rocSPARSE/level_2/gemvi/): Showcases a dense matrix-sparse vector multiplication.
+            - [spmv](/Libraries/rocSPARSE/level_2/spmv/): Showcases a general sparse matrix-dense vector multiplication.
             - [spsv](/Libraries/rocSPARSE/level_2/spsv/): Showcases how to solve a linear system of equations whose coefficients are stored in a sparse triangular matrix.
         - [level_3](/Libraries/rocSPARSE/level_3/): Operations between sparse and dense matrices.
             - [bsrmm](/Libraries/rocSPARSE/level_3/bsrmm/): Showcases a sparse matrix-matrix multiplication using BSR storage format.
