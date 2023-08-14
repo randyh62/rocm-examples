@@ -228,6 +228,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spmv_vs2019", "Libraries\ro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spmm_vs2019", "Libraries\rocSPARSE\level_3\spmm\spmm_vs2019.vcxproj", "{EC8FA476-A120-469B-BB48-DA4E0B3E50AD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtsv_vs2019", "Libraries\rocSPARSE\preconditioner\gtsv\gtsv_vs2019.vcxproj", "{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -614,6 +616,10 @@ Global
 		{EC8FA476-A120-469B-BB48-DA4E0B3E50AD}.Debug|x64.Build.0 = Debug|x64
 		{EC8FA476-A120-469B-BB48-DA4E0B3E50AD}.Release|x64.ActiveCfg = Release|x64
 		{EC8FA476-A120-469B-BB48-DA4E0B3E50AD}.Release|x64.Build.0 = Release|x64
+		{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53}.Debug|x64.ActiveCfg = Debug|x64
+		{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53}.Debug|x64.Build.0 = Debug|x64
+		{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53}.Release|x64.ActiveCfg = Release|x64
+		{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -729,6 +735,7 @@ Global
 		{9F58AD34-6173-4DD8-B224-839416D24C52} = {06DEE87C-F773-49A8-A856-8CB55BDFED6D}
 		{0F437FDF-5F2B-4028-A816-FC1A2ACA51B1} = {F0B0FD83-2B22-47F8-92B1-7A5ED88B8B5E}
 		{EC8FA476-A120-469B-BB48-DA4E0B3E50AD} = {06DEE87C-F773-49A8-A856-8CB55BDFED6D}
+		{65A27F2B-C070-4FDD-93EC-0DFEA35C2E53} = {8B7AD0F4-4288-4ACF-9980-3C500A00EF31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90580497-38BF-428E-A951-6EC6CFC68193}
