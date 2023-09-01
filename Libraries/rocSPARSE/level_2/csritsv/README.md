@@ -1,14 +1,14 @@
-# rocSPARSE Level 2 CSR Triangular Solver Example
+# rocSPARSE Level 2 CSR Iterative Triangular Matrix-Vector Multiplication
 ## Description
-This example illustrates the use of the `rocSPARSE` level 2 triangular solver using the CSR storage format.
+This example illustrates the use of the `rocSPARSE` level 2 iterative triangular solver using the CSR storage format.
 
-This triangular solver is used to solve a linear system of the form
+This triangular solver is used to find an iterative solution with Jacobi method for a linear system of the form
 
 $$
-A'y = \alpha x,
+A' y \approx \alpha x,
 $$
 
-where
+with a `tolerance` and a `max_iter` maximal number of iterations where
 
 - $A$ is a sparse triangular matrix of order $n$ whose elements are the coefficients of the equations,
 - $A'$ is one of the following:
@@ -16,7 +16,7 @@ where
     - $A' = A^T$ (transpose $A$: $A_{ij}^T = A_{ji}$)
     - $A' = A^H$ (conjugate transpose/Hermitian $A$: $A_{ij}^H = \bar A_{ji}$),
 - $\alpha$ is a scalar,
-- $x$ is a dense vector of size $m$ containing the constant terms of the equations, and
+- $x$ is a dense vector of size $n$ containing the constant terms of the equations, and
 - $y$ is a dense vector of size $n$ which contains the unknowns of the system.
 
 Obtaining solution for such a system consists on finding concrete values of all the unknowns such that the above equality holds.
@@ -25,12 +25,13 @@ Obtaining solution for such a system consists on finding concrete values of all 
 1. Setup input data.
 2. Allocate device memory and offload input data to device.
 3. Initialize rocSPARSE by creating a handle.
-4. Prepare utility variables for rocSPARSE csrsv invocation.
+4. Prepare utility variables for rocSPARSE csritsv invocation.
 5. Perform analysis step.
-6. Perform triangular solve $Ay = \alpha x$.
-7. Check results obtained. If no zero-pivots, copy solution vector $y$ from device to host and compare with expected result.
-8. Free rocSPARSE resources and device memory.
-9. Print validation result.
+6. Perform triangular solve $A' y = \alpha x$.
+7. Check results obtained.
+8. Copy solution vector $y$ from device to host and compare with expected result.
+9. Free rocSPARSE resources and device memory.
+10. Print validation result.
 
 ## Key APIs and Concepts
 ### CSR Matrix Storage Format
@@ -87,13 +88,13 @@ csr_col_ind = { 0, 1, 3, 1, 2, 0, 3, 4 }
 - `rocsparse_operation trans`: matrix operation applied to the given input matrix. The following values are accepted:
     - `rocsparse_operation_none`: identity operation $A' = A$.
     - `rocsparse_operation_transpose`: transpose operation $A' = A^\mathrm{T}$.
-    - `rocsparse_operation_conjugate_transpose`: conjugate transpose operation (Hermitian matrix) $A' = A^\mathrm{H}$. This operation is not yet supported for `rocsparse_[sdcz]_csrsv_solve`.
+    - `rocsparse_operation_conjugate_transpose`: conjugate transpose operation (Hermitian matrix) $A' = A^\mathrm{H}$. This operation is not yet supported.
 - `rocsparse_mat_descr descr`: holds all properties of a matrix. The properties set in this example are the following:
     - `rocsparse_diag_type`: indicates whether the diagonal entries of a matrix are unit elements (`rocsparse_diag_type_unit`) or not (`rocsparse_diag_type_non_unit`).
     - `rocsparse_fill_mode`: indicates whether a (triangular) matrix is lower (`rocsparse_fill_mode_lower`) or upper (`rocsparse_fill_mode_upper`) triangular.
-- `rocsparse_[sdcz]csrsv_buffer_size` allows to obtain the size (in bytes) of the temporary storage buffer required for the `rocsparse_[sdcz]csrsv_analysis` and `rocsparse_[sdcz]csrsv_solve` functions. The character matched in `[sdcz]` coincides with the one matched in any of the mentioned functions.
+- `rocsparse_[sdcz]csritsv_buffer_size` allows to obtain the size (in bytes) of the temporary storage buffer required for the `rocsparse_[sdcz]csritsv_analysis` and `rocsparse_[sdcz]csritsv_solve` functions. The character matched in `[sdcz]` coincides with the one matched in any of the mentioned functions.
 - `rocsparse_solve_policy policy`: specifies the policy to follow for triangular solvers and factorizations. The only value accepted is `rocsparse_solve_policy_auto`.
-- `rocsparse_[sdcz]csrsv_solve` solves a sparse triangular linear system $A'y = \alpha x$. The correct function signature should be chosen based on the datatype of the input matrix:
+- `rocsparse_[sdcz]csritsv_solve` solves a sparse triangular linear system $A' y = \alpha x$. The correct function signature should be chosen based on the datatype of the input matrix:
     - `s` single-precision real (`float`)
     - `d` double-precision real (`double`)
     - `c` single-precision complex (`rocsparse_float_complex`)
@@ -101,8 +102,8 @@ csr_col_ind = { 0, 1, 3, 1, 2, 0, 3, 4 }
 - `rocsparse_analysis_policy analysis`: specifies the policy to follow for analysis data. The following values are accepted:
     - `rocsparse_analysis_policy_reuse`: the analysis data gathered is re-used.
     - `rocsparse_analysis_policy_force`: the analysis data will be re-built.
-- `rocsparse_[sdcz]csrsv_analysis` performs the analysis step for `rocsparse_[sdcz]csrsv_solve`. The character matched in `[sdcz]` coincides with the one matched in `rocsparse_[sdcz]csrsv_solve`.
-- `rocsparse_csrsv_zero_pivot(rocsparse_handle, rocsparse_mat_info, rocsparse_int *position)` returns `rocsparse_status_zero_pivot` if either a structural or numerical zero has been found during the execution of `rocsparse_[sbcz]csrsv_solve(....)` and stores in `position` the index $i$ of the first zero pivot $A_{ii}$ found. If no zero pivot is found it returns `rocsparse_status_success`.
+- `rocsparse_[sdcz]csritsv_analysis` performs the analysis step for `rocsparse_[sdcz]csritsv_solve`. The character matched in `[sdcz]` coincides with the one matched in `rocsparse_[sdcz]csritsv_solve`.
+- `rocsparse_csritsv_zero_pivot(rocsparse_handle, rocsparse_mat_info, rocsparse_int *position)` returns `rocsparse_status_zero_pivot` if either a structural or numerical zero has been found during the execution of `rocsparse_[sbcz]csritsv_solve(....)` and stores in `position` the index $i$ of the first zero pivot $A_{ii}$ found. If no zero pivot is found it returns `rocsparse_status_success`.
 
 ## Demonstrated API Calls
 
@@ -112,10 +113,10 @@ csr_col_ind = { 0, 1, 3, 1, 2, 0, 3, 4 }
 - `rocsparse_create_handle`
 - `rocsparse_create_mat_descr`
 - `rocsparse_create_mat_info`
-- `rocsparse_csrsv_zero_pivot`
-- `rocsparse_dcsrsv_analysis`
-- `rocsparse_dcsrsv_buffer_size`
-- `rocsparse_dcsrsv_solve`
+- `rocsparse_csritsv_zero_pivot`
+- `rocsparse_dcsritsv_analysis`
+- `rocsparse_dcsritsv_buffer_size`
+- `rocsparse_dcsritsv_solve`
 - `rocsparse_destroy_handle`
 - `rocsparse_destroy_mat_descr`
 - `rocsparse_destroy_mat_info`
@@ -137,6 +138,7 @@ csr_col_ind = { 0, 1, 3, 1, 2, 0, 3, 4 }
 - `rocsparse_status_zero_pivot`
 
 ### HIP runtime
+- `hipDeviceSynchronize`
 - `hipFree`
 - `hipMalloc`
 - `hipMemcpy`
