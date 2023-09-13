@@ -128,7 +128,7 @@ int main()
     rocsparse_int           iter_counter = max_iter;
 
     // Set tolerance.
-    constexpr double tolerance = 1e-4;
+    double tolerance = 1e-4;
 
     // Set up convergence history.
     std::array<double, max_iter> residual_history;
@@ -212,7 +212,7 @@ int main()
     std::cout << "Iterations performed: " << iter_counter << std::endl;
 
     // Tolerance.
-    constexpr double tolerance = 1.0e5 * std::numeric_limits<double>::epsilon();
+    tolerance = 1.0e5 * std::numeric_limits<double>::epsilon();
 
     // Check last residual computed to confirm that convergence was successful.
     const double last_residual = residual_history.back();
