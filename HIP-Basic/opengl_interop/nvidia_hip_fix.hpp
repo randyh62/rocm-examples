@@ -4,6 +4,7 @@
 #include "glad/glad.h"
 
 #include <hip/hip_runtime.h>
+#include <rocm_version.h>
 
 // TODO: Remove this once HIP supports these symbols.
 // See https://github.com/ROCm-Developer-Tools/hipamd/issues/49.
@@ -32,6 +33,7 @@ hipError_t hipGraphicsGLRegisterBuffer(hipGraphicsResource_t* const resource,
     return hipCUDAErrorTohipError(cudaGraphicsGLRegisterBuffer(resource, buffer, flags));
 }
 
+#if ROCM_VERSION_MAJOR <= 5 && ROCM_VERSION_MINOR <= 5
 hipError_t hipGraphicsMapResources(const int                    count,
                                    hipGraphicsResource_t* const resources,
                                    const hipStream_t            stream = 0)
@@ -58,6 +60,7 @@ hipError_t hipGraphicsUnregisterResource(const hipGraphicsResource_t resource)
     return hipCUDAErrorTohipError(cudaGraphicsUnregisterResource(resource));
 }
 
+#endif // ROCM_VERSION_MAJOR <= 5 && ROCM_VERSION_MINOR <= 5
 #endif
 
 #endif
