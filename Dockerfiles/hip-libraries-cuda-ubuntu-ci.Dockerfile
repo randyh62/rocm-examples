@@ -90,6 +90,32 @@ RUN sudo mkdir -p /opt/Kitware/CMake ; \
 # We should probably use the solution of @Kevin from SO: https://stackoverflow.com/a/62935259/1476661
 # For the time being, global manual override it is.
 
+# Install rocRAND
+RUN export HIP_PLATFORM=nvidia ; \
+    export HIP_COMPILER=nvcc ; \
+    wget https://github.com/ROCmSoftwarePlatform/rocRAND/archive/refs/tags/rocm-${ROCM_VER}.tar.gz && \
+    tar -xf rocm-* && \
+    rm rocm-* && \
+    ROCM_PATH=/opt/rocm /opt/Kitware/CMake/${CMAKE_MINIMUM}/bin/cmake \
+    -S ./rocRAND-rocm-${ROCM_VER} \
+    -B ./rocRAND-rocm-${ROCM_VER}/build \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_CXX_COMPILER=g++ \
+    -D HIP_COMPILER=nvcc \
+    -D BUILD_FORTRAN_WRAPPER=OFF \
+    -D DEPENDENCIES_FORCE_DOWNLOAD=ON \
+    -D BUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF \
+    -D CMAKE_CUDA_ARCHITECTURES="${CUDA_ARCHS}" \
+    -D NVGPU_TARGETS="${CUDA_ARCHS}" \
+    -D BUILD_HIPRAND=OFF && \
+    /opt/Kitware/CMake/${CMAKE_MINIMUM}/bin/cmake \
+    --build ./rocRAND-rocm-${ROCM_VER}/build \
+    -- -j`nproc` && \
+    /opt/Kitware/CMake/${CMAKE_MINIMUM}/bin/cmake \
+    --install ./rocRAND-rocm-${ROCM_VER}/build \
+    --prefix /opt/rocm && \
+    rm -rf rocRAND-*
+
 # Install hipRAND
 RUN export HIP_PLATFORM=nvidia ; \
     export HIP_COMPILER=nvcc ; \
