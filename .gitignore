@@ -1,7 +1,22 @@
-.vs
-.vscode
+## IDEs
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.pdb
 [Dd]ebug
 [Rr]elease
-*.vcxproj.user
-[Bb]uild
-*.pdb
+# Visual Studio Code
+.vscode/
+
+## Tools
+compile_commands.json
+# Clangd
+.cache/
+
+# Common binary paths
+[Bb]uild/
+[Ii]nstall/
+[Pp]ackage/
+
+# CMake
+CMakeUserPresets.json
