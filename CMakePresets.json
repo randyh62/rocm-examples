@@ -164,7 +164,7 @@
 			"name": "nvcc-cuda-architectures-ci",
 			"hidden": true,
 			"cacheVariables": {
-				"CMAKE_CUDA_ARCHITECTURES": "35;70;86"
+				"CMAKE_CUDA_ARCHITECTURES": "50;70;86"
 			}
 		},
 		{
