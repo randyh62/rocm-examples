@@ -46,7 +46,7 @@ RUN sudo mkdir --parents --mode=0755 /etc/apt/keyrings ; \
 # Install HIP with AMD back-end
 RUN export DEBIAN_FRONTEND=noninteractive ; \
     apt update ; \
-    apt install -y rocm-hip-sdk ; \
+    apt install -y ninja-build rocm-hip-sdk ; \
     rm -rf /var/lib/apt/lists/*
 
 # Register /opt/rocm/lib with the system linker

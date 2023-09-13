@@ -57,7 +57,7 @@ RUN sudo mkdir --parents --mode=0755 /etc/apt/keyrings ; \
 #  - Install using apt
 RUN export DEBIAN_FRONTEND=noninteractive ; \
     apt update ; \
-    apt install -y hip-dev hipify-clang openmp-extras ; \
+    apt install -y ninja-build hip-dev hipify-clang openmp-extras ; \
     apt download hip-runtime-nvidia ; \
     dpkg-deb -x hip-runtime-nvidia_* deb-hip-runtime-nvidia ; \
     dpkg-deb --control hip-runtime-nvidia_* deb-hip-runtime-nvidia/DEBIAN ; \
