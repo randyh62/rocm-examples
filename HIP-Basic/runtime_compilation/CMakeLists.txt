@@ -65,7 +65,7 @@ if(GPU_RUNTIME STREQUAL "CUDA")
     list(APPEND include_dirs "${ROCM_ROOT}/include")
     # In this example we also need to link nvrtc CUDA library
     find_package(CUDAToolkit)
-    list(APPEND link_libs "CUDA::nvrtc")
+    list(APPEND link_libs CUDA::nvrtc $<$<PLATFORM_ID:Windows>:cuda>)
 endif()
 
 target_link_libraries(${example_name} ${link_libs})
