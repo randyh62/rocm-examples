@@ -156,21 +156,14 @@ build:cmake-rocm:
   tags:
     - rocm-build
   script:
-    - cmake
-      -S $CI_PROJECT_DIR
-      -B $CI_PROJECT_DIR/build
-      -D CMAKE_HIP_ARCHITECTURES="$GPU_TARGETS"
-      -D CMAKE_CXX_FLAGS="$CXX_FLAGS"
-      -D CMAKE_HIP_FLAGS="$HIP_FLAGS"
-      2>&1 | tee cmake_log.txt
+    - cmake --preset ninja-mc-amd-ci-linux 2>&1 | tee cmake_log.txt
     # check if all dependencies were found
     - |-
       if grep -qi "could not find" cmake_log.txt; then
           echo "Some CMake libraries could not be found"
           exit 1
       fi
-    - cmake --build $CI_PROJECT_DIR/build
-    - cmake --install $CI_PROJECT_DIR/build --prefix $CI_PROJECT_DIR/install
+    - cmake --build --preset ninja-mc-amd-ci-linux-release
 
 build:cmake-cuda:
  image: $DOCKER_TAG_PREFIX:cuda-ubuntu
@@ -179,22 +172,14 @@ build:cmake-cuda:
  tags:
    - nvcc-build
  script:
-   - cmake
-     -S $CI_PROJECT_DIR
-     -B $CI_PROJECT_DIR/build
-     -D GPU_RUNTIME=CUDA
-     -D CMAKE_CXX_FLAGS="$CXX_FLAGS"
-     -D CMAKE_CUDA_FLAGS="$CUDA_FLAGS"
-     -D CMAKE_MODULE_PATH=/opt/rocm/hip/cmake
-     2>&1 | tee cmake_log.txt
+   - cmake --preset ninja-mc-nvidia-ci-linux 2>&1 | tee cmake_log.txt
    # check if all dependencies were found
    - |-
      if grep -qi "could not find" cmake_log.txt; then
          echo "Some CMake libraries could not be found"
          exit 1
      fi
-   - cmake --build $CI_PROJECT_DIR/build
-   - cmake --install $CI_PROJECT_DIR/build --prefix $CI_PROJECT_DIR/install
+   - cmake --build --preset ninja-mc-nvidia-ci-linux-release
 
 ########################
 # Ubuntu Tests         #

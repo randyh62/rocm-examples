@@ -251,6 +251,9 @@
 				"type": "equals",
 				"lhs": "${hostSystemName}",
 				"rhs": "Linux"
+			},
+			"errors": {
+				"dev": true
 			}
 		}
 	],

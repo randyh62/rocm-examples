@@ -11,6 +11,9 @@ ARG VCPKG_INSTALL_ROOT=/opt/Microsoft/Vcpkg
 
 # Avoid locale-related warnings
 ENV LANG en_US.utf8
+# Environment variable picked up by CMakePresets.json
+# Compatible with virtual environments provided by GitHub Actions
+# https://github.com/actions/runner-images#available-images
 ENV VCPKG_INSTALLATION_ROOT ${VCPKG_INSTALL_ROOT}
 
 # Download repo sign keys from https:// sites
@@ -57,8 +60,10 @@ RUN echo "/opt/rocm/lib" >> /etc/ld.so.conf.d/rocm.conf ; \
 RUN sudo mkdir -p /opt/Kitware/CMake ; \
     wget -c https://github.com/Kitware/CMake/releases/download/v${CMAKE_MINIMUM}/cmake-${CMAKE_MINIMUM}-linux-x86_64.tar.gz -O - | sudo tar -xz --directory /opt/Kitware/CMake ; \
     sudo mv /opt/Kitware/CMake/cmake-${CMAKE_MINIMUM}-linux-x86_64 /opt/Kitware/CMake/${CMAKE_MINIMUM} ; \
+    sudo ln -s /opt/Kitware/CMake/${CMAKE_MINIMUM} /opt/Kitware/CMake/minimum ; \
     wget -c https://github.com/Kitware/CMake/releases/download/v${CMAKE_LATEST}/cmake-${CMAKE_LATEST}-linux-x86_64.tar.gz -O - | sudo tar -xz --directory /opt/Kitware/CMake ; \
-    sudo mv /opt/Kitware/CMake/cmake-${CMAKE_LATEST}-linux-x86_64 /opt/Kitware/CMake/${CMAKE_LATEST}
+    sudo mv /opt/Kitware/CMake/cmake-${CMAKE_LATEST}-linux-x86_64 /opt/Kitware/CMake/${CMAKE_LATEST} ; \
+    sudo ln -s /opt/Kitware/CMake/${CMAKE_MINIMUM} /opt/Kitware/CMake/latest
 
 # Add the render group or change id if already exists
 RUN if [ $(getent group render) ]; then \

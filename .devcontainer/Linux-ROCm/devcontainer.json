@@ -1,0 +1,40 @@
+{
+    "build": {
+        "dockerfile": "../../Dockerfiles/hip-libraries-rocm-ubuntu.Dockerfile"
+    },
+    "containerUser": "developer",
+    "runArgs": [
+        "--group-add=video",
+        "--device=/dev/kfd",
+        "--device=/dev/dri",
+        "--cap-add=SYS_NICE",
+        "--cap-add=SYS_PTRACE"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "cschlosser.doxdocgen",
+                "eamodio.gitlens",
+                "fredericbonnet.cmake-test-adapter",
+                "GitLab.gitlab-workflow",
+                "josetr.cmake-language-support-vscode",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "mhutchie.git-graph",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools",
+                "streetsidesoftware.code-spell-checker"
+            ],
+            "settings": {
+                "editor.formatOnSaveMode": "modifications",
+                "C_Cpp.autocomplete": "disabled",
+                "C_Cpp.errorSquiggles": "disabled",
+                "C_Cpp.formatting": "disabled",
+                "C_Cpp.intelliSenseEngine": "disabled",
+                "cmake.cmakePath": "/opt/Kitware/CMake/${containerEnv:CMAKE_LATEST}/bin/cmake",
+                "cmake.languageSupport.dotnetPath": "/usr/bin/dotnet"
+            }
+        }
+    }
+}
