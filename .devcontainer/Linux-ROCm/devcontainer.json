@@ -1,6 +1,6 @@
 {
     "build": {
-        "dockerfile": "../../Dockerfiles/hip-libraries-rocm-ubuntu.Dockerfile"
+        "dockerfile": "hip-libraries-rocm-ubuntu-ci.Dockerfile"
     },
     "containerUser": "developer",
     "runArgs": [
