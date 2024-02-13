@@ -161,7 +161,7 @@ std::vector<benchmark::internal::Benchmark*>
                 [&](const std::size_t item_count)
                 {
                     auto bench = benchmark::RegisterBenchmark(
-                        std::to_string(input_size) + "_" + std::to_string(block_size) + "_" + std::to_string(item_count),
+                        (std::to_string(input_size) + "_" + std::to_string(block_size) + "_" + std::to_string(item_count)).c_str(),
                         [&reduce, &input, input_size, block_size, item_count](benchmark::State& state)
                         {
                             // Run (length of loop comes from `b->Iterations(run_count);`)
